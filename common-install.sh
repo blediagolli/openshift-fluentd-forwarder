@@ -33,7 +33,7 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # List enabled repos
-subscription-manager repos --list-enabled
+yum repolist
 
 # ensure latest versions
 yum update $YUM_ARGS -y
