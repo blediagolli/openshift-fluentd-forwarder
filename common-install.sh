@@ -32,8 +32,14 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
   yum install -y epel-release centos-release-scl-rh
 fi
 
+# List enabled repos
+subscription-manager repos --list-enabled
+
 # ensure latest versions
 yum update $YUM_ARGS -y
+
+# install all required packages
+yum list $YUM_ARGS $PACKAGES
 
 # install all required packages
 yum install -y $YUM_ARGS $PACKAGES
