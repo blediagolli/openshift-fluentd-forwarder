@@ -13,7 +13,7 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 PACKAGES="gem gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
-PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-rubygems rh-ruby24-ruby-devel"
+PACKAGES="${PACKAGES} rh-ruby23 rh-ruby23-rubygems rh-ruby23-ruby-devel"
 echo $USE_SYSTEM_REPOS
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
@@ -33,9 +33,11 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # ensure latest versions
+yum repolist all
 
 #yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
 yum update $YUM_ARGS -y
+
 
 # install all required packages
 yum list $PACKAGES
@@ -55,16 +57,16 @@ mkdir -p ${HOME} && \
 # update to fluentd version that matches version deployed
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
-  tzinfo \
+  'tzinfo:<1.0.0' \
   fluentd:${FLUENTD_VERSION} \
-  activesupport \
-  public_suffix \
-  fluent-plugin-record-modifier \
-  fluent-plugin-rewrite-tag-filter \
+  'activesupport:<5' \
+  'public_suffix:<3.0.0' \
+  'fluent-plugin-record-modifier:<1.0.0' \
+  'fluent-plugin-rewrite-tag-filter:<2.0.0' \
   fluent-plugin-kubernetes_metadata_filter \
   fluent-plugin-rewrite-tag-filter \
   fluent-plugin-secure-forward \
-  fluent-plugin-remote_syslog \
+  'fluent-plugin-remote_syslog:<1.0.0' \
   fluent-plugin-splunk-ex \
   fluent-plugin-splunk-hec
 
