@@ -37,7 +37,7 @@ yum repolist enabled
 
 # ensure latest versions
 echo $YUM_ARGS
-yum-config-manager $YUM_ARGS
+yum-config-manager --enable rhel-server-rhscl-7-rpms
 
 # install all required packages
 yum list $PACKAGES
