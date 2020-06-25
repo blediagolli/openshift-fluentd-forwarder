@@ -34,7 +34,7 @@ fi
 
 # ensure latest versions
 
-yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
+#yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
 yum update $YUM_ARGS -y
 
 # install all required packages
