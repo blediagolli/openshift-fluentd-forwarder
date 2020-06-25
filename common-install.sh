@@ -14,7 +14,7 @@ PACKAGES="gem gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute
 
 # ruby packages
 PACKAGES="${PACKAGES} rh-ruby23 rh-ruby23-rubygems rh-ruby23-ruby-devel"
-
+echo $USE_SYSTEM_REPOS
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
 if [[ $RELEASE =~ $RED_HAT_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
@@ -33,6 +33,7 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # ensure latest versions
+yum update $YUM_ARGS -y
 yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
 
 # install all required packages
