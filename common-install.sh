@@ -32,6 +32,7 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
   yum install -y epel-release centos-release-scl-rh
 fi
 
+subscription-manager repos --list-enabled
 # ensure latest versions
 yum update $YUM_ARGS -y
 #yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
