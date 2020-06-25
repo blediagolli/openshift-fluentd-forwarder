@@ -55,16 +55,16 @@ mkdir -p ${HOME} && \
 # update to fluentd version that matches version deployed
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
-  'tzinfo:<1.0.0' \
+  tzinfo' \
   fluentd:${FLUENTD_VERSION} \
-  'activesupport:<5' \
-  'public_suffix:<3.0.0' \
-  'fluent-plugin-record-modifier:<1.0.0' \
-  'fluent-plugin-rewrite-tag-filter:<2.0.0' \
+  activesupport \
+  public_suffix \
+  fluent-plugin-record-modifier \
+  fluent-plugin-rewrite-tag-filter \
   fluent-plugin-kubernetes_metadata_filter \
   fluent-plugin-rewrite-tag-filter \
   fluent-plugin-secure-forward \
-  'fluent-plugin-remote_syslog:<1.0.0' \
+  fluent-plugin-remote_syslog \
   fluent-plugin-splunk-ex \
   fluent-plugin-splunk-hec
 
