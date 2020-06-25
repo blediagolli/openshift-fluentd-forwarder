@@ -55,7 +55,7 @@ mkdir -p ${HOME} && \
 # update to fluentd version that matches version deployed
 # into openshift
 gem install -N --conservative --minimal-deps --no-document \
-  tzinfo' \
+  tzinfo \
   fluentd:${FLUENTD_VERSION} \
   activesupport \
   public_suffix \
