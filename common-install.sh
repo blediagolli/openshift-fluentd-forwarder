@@ -33,18 +33,17 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # ensure latest versions
-yum-config-manager $YUM_ARGS
 yum repolist all
 
-#yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
-yum update $YUM_ARGS -y
+yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
+#yum update $YUM_ARGS -y
 
 
-# install all required packages
+# list packages
 yum list $PACKAGES
 
 # install all required packages
-yum install -y $YUM_ARGS $PACKAGES
+yum install -y $PACKAGES
 
 # clean up yum to make sure image isn't larger because of installations/updates
 yum clean all
