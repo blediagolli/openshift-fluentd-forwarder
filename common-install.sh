@@ -36,10 +36,11 @@ fi
 yum repolist enabled
 
 # ensure latest versions
-yum update $YUM_ARGS -y
+echo $YUM_ARGS
+yum-config-manager $YUM_ARGS
 
 # install all required packages
-yum list $YUM_ARGS $PACKAGES
+yum list $PACKAGES
 
 # install all required packages
 yum install -y $YUM_ARGS $PACKAGES
