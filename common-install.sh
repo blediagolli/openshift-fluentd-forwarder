@@ -36,7 +36,7 @@ fi
 yum update $YUM_ARGS -y
 
 # install all required packages
-yum install -y $YUM_ARGS $PACKAGES
+yum install -y $YUM_ARGS $PACKAGES ruby:2.3.0
 
 # clean up yum to make sure image isn't larger because of installations/updates
 yum clean all
