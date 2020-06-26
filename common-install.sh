@@ -52,7 +52,7 @@ mkdir -p ${HOME} && \
 gem install -N --conservative --minimal-deps --no-document \
   'tzinfo:<1.0.0' \
   fluentd:${FLUENTD_VERSION} \
-  'activesupport:<5' \
+  activesupport \
   'public_suffix:<3.0.0' \
   'fluent-plugin-record-modifier:<1.0.0' \
   'fluent-plugin-rewrite-tag-filter:<2.0.0' \
