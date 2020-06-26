@@ -13,8 +13,8 @@ YUM_ARGS="--setopt=tsflags=nodocs"
 PACKAGES="gem gcc-c++ libcurl-devel make bc gettext nss_wrapper hostname iproute"
 
 # ruby packages
-PACKAGES="${PACKAGES} rh-ruby23 rh-ruby23-rubygems rh-ruby23-ruby-devel"
-echo $USE_SYSTEM_REPOS
+PACKAGES="${PACKAGES} rh-ruby24 rh-ruby24-rubygems rh-ruby24-ruby-devel"
+
 # if the release is a red hat version then we need to set additional arguments for yum repositories
 RED_HAT_MATCH='^Red Hat.*$'
 if [[ $RELEASE =~ $RED_HAT_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
@@ -33,19 +33,10 @@ if [[ $RELEASE =~ $CENTOS_MATCH && -z "$USE_SYSTEM_REPOS" ]]; then
 fi
 
 # ensure latest versions
-yum repolist all
-
-yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
-#yum update $YUM_ARGS -y
-
-# ensure latest versions
-yum repolist all
-
-# list packages
-yum list $PACKAGES
+yum update $YUM_ARGS -y
 
 # install all required packages
-yum install -y $PACKAGES
+yum install -y $YUM_ARGS $PACKAGES
 
 # clean up yum to make sure image isn't larger because of installations/updates
 yum clean all
