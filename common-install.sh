@@ -34,10 +34,11 @@ fi
 
 # ensure latest versions
 yum update $YUM_ARGS -y
-yum --showduplicates list ruby
+
 
 # install all required packages
 yum install -y $YUM_ARGS $PACKAGES
+yum --showduplicates list ruby
 
 # clean up yum to make sure image isn't larger because of installations/updates
 yum clean all
