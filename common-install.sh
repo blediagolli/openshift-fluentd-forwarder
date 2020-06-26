@@ -38,6 +38,8 @@ yum repolist all
 yum-config-manager --enablerepo=rhel-7-server-rpms --enablerepo=rhel-server-rhscl-7-rpms --enablerepo=rhel-7-server-optional-rpms
 #yum update $YUM_ARGS -y
 
+# ensure latest versions
+yum repolist all
 
 # list packages
 yum list $PACKAGES
